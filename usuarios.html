@@ -1,0 +1,26 @@
+{% extends 'tarefas/base.html' %}
+
+{% block conteudo %}
+<div class="container mt-5">
+    <h1 class="mb-4">Seja Bem-vindo, {{ usuario_logado.nome }}!</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Função</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ usuario_logado.nome }}</td>
+                <td>{{ usuario_logado.email }}</td>
+                <td>{{ usuario_logado.funcao }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url 'registrar_entrada' %}" class="btn btn-primary mb-3">Registrar Entrada</a>
+</div>
+{% endblock %}

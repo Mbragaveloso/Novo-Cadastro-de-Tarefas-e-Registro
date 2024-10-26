@@ -1,0 +1,25 @@
+{% extends "tarefas/base.html" %}
+{% load tz %}
+{% block conteudo %}
+<div class="container mt-5">
+    <h1>Cadastro de Tarefas</h1>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'registrar_tarefa' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="descricao">Descrição da Tarefa Realizada:</label>
+                <textarea name="descricao" id="descricao" class="form-control" rows="5" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Salvar</button>
+            <button class="btn btn-secondary" type="button" onclick="window.location.href='{% url 'listar_tarefas' %}'">Listar Tarefas</button>
+            <button class="btn btn-danger" type="button" onclick="window.location.href='{% url 'sair' %}'">Sair</button>
+        </form>
+</div>
+{% endblock %}

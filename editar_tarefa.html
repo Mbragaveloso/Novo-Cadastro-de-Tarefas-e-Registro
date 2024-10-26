@@ -1,0 +1,15 @@
+{% extends "tarefas/base.html" %}
+{% block conteudo %}
+<div class="container mt-5">
+    <h2 class="text-center">Editar Tarefa</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control" rows="4" readonly>{{ tarefa.descricao }}</textarea>
+            <textarea name="descricao" id="descricao" class="form-control" rows="6" style="width: 100%;" required>{{ tarefa.descricao }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Salvar Alterações</button>
+        <a href="{% url 'listar_tarefas' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

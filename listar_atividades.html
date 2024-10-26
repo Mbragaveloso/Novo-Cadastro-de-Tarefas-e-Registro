@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Descrição</th>
+            <th>Data de Criação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for atividade in atividades %}
+            <tr>
+                <td>{{ atividade.descricao }}</td>
+                <td>{{ atividade.data_criacao|date:"d/m/Y H:i:s" }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2">Nenhuma atividade encontrada.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

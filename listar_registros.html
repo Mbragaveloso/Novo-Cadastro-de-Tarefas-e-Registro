@@ -1,0 +1,26 @@
+{% extends 'tarefas/base.html' %}
+{% block conteudo %}
+<h2>Registro de Saídas</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Horas Trabalhadas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registro in registros %}
+        <tr>
+            <td>{{ registro.usuario.nome }}</td>
+            <td>{{ registro.entrada|date:"d/m/Y H:i" }}</td>
+            <td>{% if registro.saida %}{{ registro.saida|date:"d/m/Y H:i" }}{% else %}Não calculado{% endif %}</td>
+            <td>{{ registro.horas_trabalhadas_formatado }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

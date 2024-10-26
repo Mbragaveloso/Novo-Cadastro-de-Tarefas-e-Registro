@@ -1,0 +1,24 @@
+{% extends 'tarefas/base.html' %}
+
+{% block conteudo %}
+<div class="container">
+    <h1>Registrar Entrada</h1>
+    <p> Comece registrando seu horário!</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="registro_id">Selecione o registro:</label>
+        <select name="registro_id" id="registro_id">
+            {% for registro in registros %}
+                <option value="{{ registro.id }}">
+                    Entrada: {{ registro.entrada }} - Saída: {{ registro.saida }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-success mt-3">Registrar Entrada</button>
+    </form>
+
+   
+
+</div>
+{% endblock %}

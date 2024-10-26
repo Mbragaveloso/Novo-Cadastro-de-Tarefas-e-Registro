@@ -1,0 +1,28 @@
+{% extends "tarefas/base.html" %} 
+
+{% block conteudo %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="{% url 'usuario' %}" method="post">
+        {% csrf_token %}
+        <div style="text-align: center;" class="container">
+            <h1>Cadastro de Usuários</h1>
+            {{ form.as_p }}
+            <button class="form-control-sm" type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <ul>
+        {% for usuario in usuarios %}
+            <li>{{ usuario.nome }} - {{ usuario.email }}{% if usuario.descricao %} - {{ usuario.descricao }}{% endif %}</li>
+        {% endfor %}
+    </ul>
+    <h2>Links Úteis</h2>
+    
+{% endblock %}

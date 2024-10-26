@@ -1,0 +1,32 @@
+{% extends 'tarefas/base.html' %}
+
+{% block conteudo %}
+<div class="container">
+    <h2>Registrar Tarefas</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <textarea id="descricao" name="descricao" class="form-control" rows="10" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="relacionamento" class="form-label">Relacionamento</label>
+            <select id="relacionamento" name="relacionamento" class="form-select" required>
+                <option value="em análise">Em Análise</option>
+                <option value="aprovada">Aprovada</option>
+                <option value="rejeitada">Rejeitada</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select id="status" name="status" class="form-select" required>
+                <option value="pendente">Pendente</option>
+                <option value="em andamento">Em Andamento</option>
+                <option value="concluída">Concluída</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar Tarefa</button>
+    </form>
+
+</div>
+{% endblock %}

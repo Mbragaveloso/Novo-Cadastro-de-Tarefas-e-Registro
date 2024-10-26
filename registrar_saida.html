@@ -1,0 +1,18 @@
+{% extends 'tarefas/base.html' %}
+{% block conteudo %}
+<h2>Registrar Saída</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label for="registro_id">Selecione um registro:</label>
+    <select name="registro_id" id="registro_id" required>
+        <option value="">-- Selecione --</option>
+        {% for registro in registros %}
+            <option value="{{ registro.id }}">
+                {{ registro.usuario.nome }} - Entrada: {{ registro.entrada|date:"d/m/Y H:i" }}{% if registro.saida %} - Saída: {{ registro.saida|date:"d/m/Y H:i" }}{% endif %}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Registrar Saída</button>
+</form>
+<p>Hora atual: {{ hora_atual|date:"d/m/Y H:i" }}</p>
+{% endblock %}
